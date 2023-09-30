@@ -8,9 +8,20 @@ public class Main {
         users.add(new Accounts(5235,2786,"Jane Doe","jadoe@gmail.com",7642000));
         return users;
     }
+    public static Accounts currentUser(int id){
+        Accounts currentUser = null;
+        for(Accounts userFound:getUsers())
+            if(userFound.getId() == id)
+                currentUser = userFound;
+        return currentUser;
+    }
     public static void main(String[] args)
     {
+        LoginForm lf = new LoginForm();
 
-
+        DashBoard dashBoard = new DashBoard();
+//        if(!lf.isVisible()){
+//            dashBoard.setBalanceText(String.valueOf(currentUser(lf.getUserID()).getBalance()));
+//        }
     }
 }

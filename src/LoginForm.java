@@ -23,12 +23,26 @@ public class LoginForm extends JFrame {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(Login.checkIfLog(Integer.parseInt(enterYourAccountIDTextField.getText()),Integer.parseInt(passwordField1.getText()))!=null)
-                 new Login(Integer.parseInt(enterYourAccountIDTextField.getText()));
-                System.out.println(Login.getUserId());
-            }
+                getUserID();
+                }
+
+
         });
     }
 
     private JButton loginButton;
+    public int getUserID() {
+        if(Login.checkIfLog(Integer.parseInt(enterYourAccountIDTextField.getText()),Integer.parseInt(passwordField1.getText()))!=null) {
+            new Login(Integer.parseInt(enterYourAccountIDTextField.getText()));
+            System.out.println(Login.getUserId());
+            setVisible(false);
+
+        }
+        DashBoard dashBoard = new DashBoard();
+        dashBoard.setVisible(true);
+        dashBoard.setBalanceText(String.valueOf(Main.currentUser(Login.getUserId()).getBalance()));
+
+        return Login.getUserId();
+    }
+
 }
